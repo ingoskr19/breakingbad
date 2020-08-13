@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Xumak Test</string>
+    <string name="character_list_title">Breaking Bad Characters</string>
+    <string name="occupation">Ocupation</string>
+    <string name="birthday">Birthday</string>
+    <string name="status">Status</string>
+    <string name="appearance">Appearance</string>
+    <string name="portrayed">Portrayed </string>
+
+    <string name="favorite">Favorite</string>
+    <string name="name">Name</string>
+    <string name="title">Breaking Bad Characters</string>
+    <string name="help_text">Swipe down to see more characters</string>
+
+</resources>
