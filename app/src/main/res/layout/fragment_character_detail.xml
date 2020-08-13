@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/plant_detail_app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:stateListAnimator="@animator/show_toolbar"
+        android:background="@drawable/background_detail"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorSurface"
+            app:statusBarScrim="?attr/colorSurface"
+            app:collapsedTitleGravity="center"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.character.Toolbar.Text"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@id/toolbar">
+
+            <ImageView
+                android:id="@+id/character_detail_character_img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/plant_detail_app_bar_height"
+                android:contentDescription="Description"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitCenter"
+                app:layout_collapseMode="pin" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:titleTextColor="@color/textColorDetail"
+                app:layout_collapseMode="pin"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:menu="@menu/toolbar_character_detail"
+                />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/plant_detail_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:background="@color/background_item"
+        android:paddingBottom="@dimen/fab_bottom_padding"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/character_detail_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/character_detail_name_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:text="@string/name"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_name_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:textAlignment="center"
+                android:textColor="@color/textColorDetail"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/character_detail_name_lbl"
+                app:layout_constraintBaseline_toBaselineOf="@+id/character_detail_name_lbl"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_status_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:text="@string/status"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_detail_name_lbl"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_status_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:gravity="center"
+                android:textColor="@color/textColorDetail"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/character_detail_status_lbl"
+                app:layout_constraintBaseline_toBaselineOf="@+id/character_detail_status_lbl"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_birthday_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:text="@string/birthday"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_detail_status_lbl" />
+
+            <TextView
+                android:id="@+id/character_detail_birthday_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:textAlignment="center"
+                android:textColor="@color/textColorDetail"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/character_detail_birthday_lbl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/character_detail_birthday_lbl" />
+
+            <TextView
+                android:id="@+id/character_detail_occupation_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:text="@string/occupation"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintTop_toBottomOf="@+id/character_detail_birthday_lbl"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_occupation_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:textColor="@color/textColorDetail"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/character_detail_occupation_lbl"
+                app:layout_constraintStart_toEndOf="@id/character_detail_portrayed_lbl"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+            <TextView
+                android:id="@+id/character_detail_portrayed_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:text="@string/portrayed"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintTop_toBottomOf="@id/character_detail_occupation_lbl"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_portrayed_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:gravity="center"
+                android:textColor="@color/textColorDetail"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/character_detail_portrayed_lbl"
+                app:layout_constraintBaseline_toBaselineOf="@+id/character_detail_portrayed_lbl"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/character_detail_appearance_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:text="@string/appearance"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintTop_toBottomOf="@id/character_detail_portrayed_lbl"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+            <TextView
+                android:id="@+id/character_detail_appearance_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/acherus_militant_light"
+                android:gravity="center"
+                android:textColor="@color/textColorDetail"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/character_detail_appearance_lbl"
+                app:layout_constraintBaseline_toBaselineOf="@+id/character_detail_appearance_lbl"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

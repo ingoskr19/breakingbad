@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@android:color/primary_text_dark_nodisable</item>
+        <item name="colorOnPrimary">@android:color/holo_green_dark</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
+        <item name="colorOnSurface">@android:color/holo_green_light</item>
+        <item name="colorAccent">@android:color/primary_text_dark_nodisable</item>
+        <item name="colorSurface">@android:color/widget_edittext_dark</item>
+        <item name="colorSecondary">@android:color/holo_orange_dark</item>
+        <item name="android:colorBackground">@color/background_item</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="character_name_txt">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/acherus_militant_bold</item>
+        <item name="android:layout_marginLeft">@dimen/character_name_margin_left</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="character_nickname_txt">
+        <item name="fontFamily">@font/acherus_militant_light</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_marginLeft">@dimen/character_nickname_margin_left</item>
+    </style>
+
+    <style name="character_image">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="elevation">5dp</item>
+    </style>
+
+    <style name="toolbar">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/acherus_militant_bold</item>
+        <item name="android:textSize">@dimen/title_toolbar</item>
+    </style>
+
+    <dimen name="title_toolbar">15sp</dimen>
+
+    <style name="Theme.character.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+    <style name="TextAppearance.character.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">@color/colorGray</item>
+    </style>
+</resources>

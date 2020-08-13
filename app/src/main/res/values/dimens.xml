@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="character_item_margin">15dp</dimen>
+    <dimen name="character_item_margin_between">8dp</dimen>
+    <dimen name="characters_margin_bottom">10dp</dimen>
+
+    <dimen name="character_nickname_margin_top">2dp</dimen>
+    <dimen name="character_nickname_margin_left">10dp</dimen>
+    <dimen name="character_name_margin_bottom">2dp</dimen>
+    <dimen name="character_name_margin_left">10dp</dimen>
+    <dimen name="character_cardview_radius">20dp</dimen>
+    <dimen name="character_item_padding">10dp</dimen>
+
+
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="fab_bottom_padding">72dp</dimen>
+    <dimen name="plant_detail_app_bar_height">278dp</dimen>
+
+    <dimen name="toolbar_elevation">5dp</dimen>
+
+</resources>
