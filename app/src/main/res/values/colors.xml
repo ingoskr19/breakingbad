@@ -9,5 +9,6 @@
     <color name="inactivityGray">#BBBBBB</color>
     <color name="textColorDetail">#012353</color>
     <color name="colorFavorite">#009688</color>
+    <color name="primaryColor">#009688</color>
 
 </resources>

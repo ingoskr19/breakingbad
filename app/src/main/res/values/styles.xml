@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@android:color/primary_text_dark_nodisable</item>
+        <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorOnPrimary">@android:color/holo_green_dark</item>
         <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
         <item name="colorOnSurface">@android:color/holo_green_light</item>
