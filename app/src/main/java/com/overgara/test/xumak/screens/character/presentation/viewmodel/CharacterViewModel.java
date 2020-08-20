@@ -1,7 +1,8 @@
 package com.overgara.test.xumak.screens.character.presentation.viewmodel;
 
-import android.util.Log;
-
+import androidx.hilt.Assisted;
+import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import com.overgara.test.xumak.presentation.viewmodel.state.StateLiveData;
@@ -11,8 +12,6 @@ import com.overgara.test.xumak.screens.character.presentation.model.Character;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -24,13 +23,17 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class CharacterViewModel extends ViewModel implements CharacterContract.ViewModel {
 
-    @Inject
     ICharacterInteractor mInteractor;
 
     private StateLiveData<List<Character>> characters = new StateLiveData<>();
     private StateLiveData<Character> selected = new StateLiveData<>();
     private int positionSelected;
     private boolean isFinished = false;
+
+    @ViewModelInject
+    public CharacterViewModel(ICharacterInteractor mInteractor) {
+        this.mInteractor = mInteractor;
+    }
 
     @Override
     public void setSelected(Character character, int position) {
@@ -119,11 +122,6 @@ public class CharacterViewModel extends ViewModel implements CharacterContract.V
             setFavorite(positionSelected);
             selected.postSuccess(characters.getValue().getData().get(positionSelected));
         }
-    }
-
-    @Override
-    public void setInteractor(ICharacterInteractor interactor) {
-        mInteractor = interactor;
     }
 
     @Override

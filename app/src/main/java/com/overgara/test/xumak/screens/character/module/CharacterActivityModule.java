@@ -12,33 +12,41 @@ import com.overgara.test.xumak.screens.character.presentation.view.CharacterActi
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ActivityRetainedComponent;
+import dagger.hilt.android.scopes.ActivityRetainedScoped;
 
 /**
  * Created By oscar.vergara on 12/08/2020
  */
+@InstallIn(ActivityRetainedComponent.class)
 @Module
 public abstract class CharacterActivityModule {
 
     @Binds
+    @ActivityRetainedScoped
     abstract CharacterActivity activity(CharacterActivity activity);
 
-
     @Provides
+    @ActivityRetainedScoped
     static ICharacterInteractor interactor(CharacterRepository repository){
         return new CharacterInteractor(repository);
     }
 
     @Provides
-    public static CharacterRepository repository(BreakingBadDataBase dataBase){
-        return new CharacterDataSource(api(),dao(dataBase));
+    @ActivityRetainedScoped
+    public static CharacterRepository repository(CharacterApi api, CharacterDao dao){
+        return new CharacterDataSource(api,dao);
     }
 
     @Provides
-    static CharacterApi api(){
+    @ActivityRetainedScoped
+    public static CharacterApi api(){
         return new CharacterApi();
     }
 
     @Provides
+    @ActivityRetainedScoped
     static CharacterDao dao(BreakingBadDataBase dataBase){
         return dataBase.characterDao();
     }

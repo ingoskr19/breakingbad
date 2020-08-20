@@ -18,11 +18,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.overgara.test.xumak.R;
 import com.overgara.test.xumak.base.BaseFragment;
 import com.overgara.test.xumak.presentation.viewmodel.state.StateData;
-import com.overgara.test.xumak.screens.character.domain.interactor.ICharacterInteractor;
 import com.overgara.test.xumak.screens.character.presentation.model.Character;
-import com.overgara.test.xumak.screens.character.presentation.viewmodel.CharacterViewModel;
 import com.overgara.test.xumak.screens.character.presentation.view.adapter.CharacterAdapter;
 import com.overgara.test.xumak.screens.character.presentation.view.listener.CharacterClickListener;
+import com.overgara.test.xumak.screens.character.presentation.viewmodel.CharacterViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,23 +29,22 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * Created By oscar.vergara on 14/08/2020
  */
+@AndroidEntryPoint
 public class CharacterListFragment extends BaseFragment implements CharacterClickListener {
     private List<Character> characters = new ArrayList<>();
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private LinearLayoutManager layoutManager;
     private int fetch = 10;
     private RecyclerView.OnScrollListener scrollListener;
     private ImageView toTop;
     private ImageView toBottom;
 
-    CharacterViewModel characterViewModel;
-
-    @Inject
-    ICharacterInteractor interactor;
+    private CharacterViewModel characterViewModel;
 
     @Nullable
     @Override
@@ -58,8 +56,7 @@ public class CharacterListFragment extends BaseFragment implements CharacterClic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews();
-        characterViewModel = new ViewModelProvider(getActivity()).get(CharacterViewModel.class);
-        characterViewModel.setInteractor(interactor);
+        characterViewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
         observeCharactersList();
 
         if(characterViewModel.getListObs().getValue() != null
@@ -70,7 +67,6 @@ public class CharacterListFragment extends BaseFragment implements CharacterClic
         if(characters.size() == 0){
             getCharacters();
         }
-
     }
 
     private void getCharacters(){
@@ -78,19 +74,17 @@ public class CharacterListFragment extends BaseFragment implements CharacterClic
     }
 
     private void initViews() {
-        recyclerView = getActivity().findViewById(R.id.characters_recycler);
+        recyclerView = requireActivity().findViewById(R.id.characters_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new CharacterAdapter(this));
-        layoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addOnScrollListener(setupScrollListener());
-        swipeRefreshLayout = getActivity().findViewById(R.id.swipeRefresh);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            getCharacters();
-        });
+        swipeRefreshLayout = requireActivity().findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(this::getCharacters);
 
-        toTop = getActivity().findViewById(R.id.characters_toTop);
-        toBottom = getActivity().findViewById(R.id.characters_toBottom);
+        toTop = requireActivity().findViewById(R.id.characters_toTop);
+        toBottom = requireActivity().findViewById(R.id.characters_toBottom);
 
         toTop.setOnClickListener(view->{
             toBottom.setVisibility(View.VISIBLE);
@@ -145,7 +139,7 @@ public class CharacterListFragment extends BaseFragment implements CharacterClic
             if (diff < fetch) {
                 getCharacters();
             } else {
-                recyclerView.scrollToPosition(characters.size()-diff-1);
+                recyclerView.scrollToPosition(this.characters.size()-1);
             }
         }
     }

@@ -2,17 +2,20 @@ Breaking Bad characters test implementation
 
 ###### Project architecture  ######
 
-Clean architecture:
-  - ViewModel
-  - RxJava
+Android JetPack:
+  - ViewModel(LiveData)
   - Retrofit
   - Room Database
-  - Dagger2 
+  - Hilt
+  - Navigation component
+  - Roboelectric(Implementation Test)
+
+- RxJava (For observables between ViewModel and Interactor)
 
 Directories structure:
   - base (For base clases)
   - config (Constants class)
-  - di (Dagger configuration, scopes, AppModule, AppComponent )
+  - di (Hilt-AppModule)
   - presentation (Common classes for States and Data Handling between UI and ViewModel)
   - screens (Bussines Modules)
     - characters
