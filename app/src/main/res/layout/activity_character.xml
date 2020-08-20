@@ -6,7 +6,7 @@
     android:background="@color/background_item"
     android:layout_marginBottom="@dimen/characters_margin_bottom">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

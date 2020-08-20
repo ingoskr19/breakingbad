@@ -12,12 +12,10 @@ import java.util.List;
 public interface CharacterContract {
 
     interface ViewModel {
-
         void getCharacters(int limit, int offset);
         void setSelected(Character character,int position);
         void setFavorite(int position);
         void setFavoriteSelected();
-        void setInteractor(ICharacterInteractor interactor);
         StateLiveData<Character> getSelectedObs();
         StateLiveData<List<Character>> getListObs();
     }
